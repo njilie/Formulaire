@@ -1,0 +1,42 @@
+<div id="container">
+    <h2 style="text-align: center;">Création d'un utilisateur</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form">
+        <label for="nom">
+            Nom:
+            <input type="text" formControlName="nom">
+        </label>
+        <label for="prenom">
+            Prénom:
+            <input type="text" formControlName="prenom">
+        </label>
+        <label for="age">
+            Age:
+            <input type="text" formControlName="age">
+        </label>
+        <div formGroupName = "adresse">
+            <h3>Adresse</h3>
+            <label for="rue">
+                Rue:
+                <input type="text" formControlName="rue">
+            </label>
+            <label for="numero">
+                Numero:
+                <input type="text" formControlName="numero">
+            </label>
+            <label for="codePostal">
+                Code Postal:
+                <input type="number" formControlName="codePostal" maxlength="5" size="5" >
+            </label>
+        </div>
+        <div formArrayName="chats">
+            <h3>Chat</h3>
+            <div *ngFor="let chat of chats.controls; let i=index">
+                <label>Nom du chat:<input type="text" [formControlName]="i"></label>
+            </div>
+            <button type="button" (click)="ajouterChat()" class="ajout">Ajouter un nouveau Chat</button>
+        </div>
+        <button type="submit" class="envoyer">Envoyer</button>
+    </form>
+
+</div>
+
